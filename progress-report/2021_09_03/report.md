@@ -7,40 +7,6 @@
         評価指標：GDX, IGDX, HV  
         skewMED p : [2,2], [2,1], [2,0.5], [1,1], [1,0.5], [0.5,0.5]
 
-<details><summary>実験結果のplot</summary><div>
-moead GDX  
-<img src="file:///Users/tatsuya/Desktop/moeadGDX.png">
-
-moead IGDX
-<img src="file:///Users/tatsuya/Desktop/moeadIGDX.png">  
-moead HV
-<img src="file:///Users/tatsuya/Desktop/moeadHV.png">  
-nsgaii GDX
-<img src="file:///Users/tatsuya/Desktop/nsgaiiGDX.png">  
-nsgaii IGDX
-<img src="file:///Users/tatsuya/Desktop/nsgaiiIGDX.png">  
-nsgaiii GDX
-<img src="file:///Users/tatsuya/Desktop/nsgaiii-GDX.png">  
-nsgaiii IGDX
-<img src="file:///Users/tatsuya/Desktop/nsgaiiiIGDX.png">  
-nsgaiii HV
-<img src="file:///Users/tatsuya/Desktop/nsgaiiiHV.png">  
-spea2 GDX
-<img src="file:///Users/tatsuya/Desktop/spea2GDX.png">  
-spea2 IGDX
-<img src="file:///Users/tatsuya/Desktop/spea2IGDX.png">  
-spea2 HV
-<img src="file:///Users/tatsuya/Desktop/spea2HV.png">  
-smpso GDX
-<img src="file:///Users/tatsuya/Desktop/smpsoGDX.png">  
-smpso IGDX
-<img src="file:///Users/tatsuya/Desktop/smpsoIGDX.png">  
-smpso HV
-<img src="file:///Users/tatsuya/Desktop/smpsoHV.png">  
-
-
-</div></details>
-
 ## これからやること
 - アーカイブの追加, 非劣解集合の抜き出し, アーカイブを評価回数で区切って実験結果を計算する関数の実装
     - イテレーションごとの評価が取りたいので, アーカイブを追加することで非劣解集合のみで評価ができるようにする
