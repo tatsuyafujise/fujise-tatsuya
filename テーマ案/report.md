@@ -20,7 +20,7 @@
 ```math
 x^\ast(\alpha) = \mathop{\rm arg~min}\limits_{x \in \mathcal{X}} \, f(x, \alpha)
 ```
-​
+
 ### やりたいこと
 - 各パラメータ$\alpha$に対応する最適解$x^\ast(\alpha)$がほしい
   - ただし，パラメータが変わるごとに最初から最適化を行うのはコストが大きいため不可
@@ -88,38 +88,39 @@ return gaussian_process_all
 ### 案2：ベジエ単体を用いた最適化
 - ガウス過程回帰の代わりにベジエ単体を利用
   - 新しく評価するパラメータはサンプリングするしかない？（要検討）
-  ```python
-  initialization() # 初期化
-  f = get_objective_function() # パラメータ付き目的関数
-  ite = 0
-  archive = [] # 評価済みの解の保存用配列
+
+```python
+initialization() # 初期化
+f = get_objective_function() # パラメータ付き目的関数
+ite = 0
+archive = [] # 評価済みの解の保存用配列
 ​
-  while not teminate_condition():
-    # 初期フェーズ
-    if ite < init_phase:
-      # パラメータをサンプリング
-      alpha = sampling_parameter()
-      # パラメータのもとでの最適解の計算（任意の最適化法）
-      best_eval, best_x = optimize(f, alpha)　
-      # リストに保存
-      archive.append((alpha, best_eval))
-    else:
-      # パラメータをサンプリング
-      next_alpha = sampling_parameter()
-      # フィッティングによりベジエ単体を獲得
-      bezier = fititng(archive)
-      # 最適化法の初期値をベジエ単体を使って設定（計算コスト削減のため）
-      optimizer = get_optimizer(init_solution = bezier(next_alpha))
-      # パラメータのもとでの最適解の計算（任意の最適化法）
-      best_eval, best_x = optimizer.optimize(f, next_alpha)
-      # リストに保存
-      archive.append((next_alpha, best_eval))
-    ite += 1
+while not teminate_condition():
+  # 初期フェーズ
+  if ite < init_phase:
+    # パラメータをサンプリング
+    alpha = sampling_parameter()
+    # パラメータのもとでの最適解の計算（任意の最適化法）
+    best_eval, best_x = optimize(f, alpha)　
+    # リストに保存
+    archive.append((alpha, best_eval))
+  else:
+    # パラメータをサンプリング
+    next_alpha = sampling_parameter()
+    # フィッティングによりベジエ単体を獲得
+    bezier = fititng(archive)
+    # 最適化法の初期値をベジエ単体を使って設定（計算コスト削減のため）
+    optimizer = get_optimizer(init_solution = bezier(next_alpha))
+    # パラメータのもとでの最適解の計算（任意の最適化法）
+    best_eval, best_x = optimizer.optimize(f, next_alpha)
+    # リストに保存
+    archive.append((next_alpha, best_eval))
+  ite += 1
 ​
-  # フィッティングにより最終的なモデルを獲得
-  gaussian_process_all = fititng(archive)
-  return gaussian_process_all
-  ```
+# フィッティングにより最終的なモデルを獲得
+gaussian_process_all = fititng(archive)
+return gaussian_process_all
+```
 ​
 ### 案3：スカラ化関数を用いた多目的最適化法に基づく手法
 - スカラ化関数の代わりに$f(x, \alpha)$を利用
