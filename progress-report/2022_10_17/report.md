@@ -12,21 +12,21 @@
     * cov：共分散行列の初期値を回帰モデルの予測の共分散で与える
 
 ## 実験結果(noneのみ)
-* SMD1
+* SMD1  
 ![](none_SMD1.png)
-* SMD2
+* SMD2  
 ![](none_SMD2.png)
-* SMD3
+* SMD3  
 ![](none_SMD3.png)
-* SMD4
+* SMD4  
 ![](none_SMD4.png)
-* SMD5
+* SMD5  
 ![](none_SMD5.png)
-* SMD6
+* SMD6  
 ![](none_SMD6.png)
-* SMD7
+* SMD7  
 ![](none_SMD7.png)
-* SMD8
+* SMD8  
 ![](none_SMD8.png)
 
 ## 実験結果
